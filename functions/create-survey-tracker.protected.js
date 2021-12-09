@@ -8,7 +8,7 @@ exports.handler = async (context, event, callback) => {
     const response = await client.taskrouter
       .workspaces(context.TWILIO_WORKSPACE_SID)
       .tasks.create({
-        attributes: JSON.stringify({ callSurvey: conversations }),
+        attributes: JSON.stringify(attributes),
         workflowSid: context.TWILIO_NOBODY_WORKFLOW_SID,
         timeout: 300,
       });
