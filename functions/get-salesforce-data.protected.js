@@ -8,10 +8,9 @@ exports.handler = function (context, event, callback) {
     priority: false,
     url: 'no url found',
   };
-  //connect to the test sandbox, you can remove the login url for production
-  var conn = new jsforce.Connection({
-    loginUrl: 'https://test.salesforce.com',
-  });
+  //connect to the test sandbox if test url is present in .env
+  const testUrl = context.JSFORCE_URL ? { loginUrl: context.JSFORCE_URL } : {};
+  var conn = new jsforce.Connection(testUrl);
   conn.login(salesforceUserName, salesforcePassword, function (err, res) {
     if (err) {
       return console.error(err);
