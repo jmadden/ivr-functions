@@ -1,5 +1,5 @@
 exports.handler = function (context, event, callback) {
-  const phoneNumber = event.To.substring(2);
+  const phoneNumber = event.To;
   const client = context.getTwilioClient();
 
   client.incomingPhoneNumbers.list(
