@@ -2,7 +2,9 @@ exports.handler = function (context, event, callback) {
   const jsforce = require('jsforce');
   const salesforceUserName = context.SALESFORCE_USERNAME;
   const salesforcePassword = context.SALESFORCE_PASSWORD;
-  const phoneNumber = event.To;
+  const phoneNumber = event.To.substring(2);
+
+  console.log('SALESFORCE PHONE: ', phoneNumber);
 
   var callbackResponse = {
     priority: false,
